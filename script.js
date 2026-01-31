@@ -120,6 +120,9 @@ document.addEventListener('mousemove', function(e) {
 
 // 訪問者カウンターの更新関数
 function updateVisitorCounter() {
+    const DEFAULT_VISITOR_COUNT = 247;
+    const COUNTER_DISPLAY_LENGTH = 6;
+    
     const counterElement = document.getElementById('visitor-counter');
     const messageElement = document.getElementById('visitor-message');
     
@@ -127,7 +130,7 @@ function updateVisitorCounter() {
         // カウンター値を取得（実際はローカルストレージやサーバーから取得）
         let count = localStorage.getItem('visitorCount');
         if (!count) {
-            count = 247; // デフォルト値
+            count = DEFAULT_VISITOR_COUNT;
         } else {
             count = parseInt(count, 10);
         }
@@ -136,8 +139,8 @@ function updateVisitorCounter() {
         count++;
         localStorage.setItem('visitorCount', count);
         
-        // カウンター表示を更新（6桁でゼロパディング）
-        const paddedCount = String(count).padStart(6, '0');
+        // カウンター表示を更新（ゼロパディング）
+        const paddedCount = String(count).padStart(COUNTER_DISPLAY_LENGTH, '0');
         counterElement.textContent = paddedCount;
         
         // メッセージ表示を更新
