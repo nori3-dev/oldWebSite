@@ -2,7 +2,10 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     // ページ読み込み時のエフェクト
-    console.log('%c★ ようこそ！夢幻のアニメワールドへ ★', 'color: #FF1493; font-size: 16px; font-weight: bold;');
+    console.log('%c★ ようこそ、虚空の回廊へ ★', 'color: #FF1493; font-size: 16px; font-weight: bold;');
+    
+    // カウンター表示の更新
+    updateVisitorCounter();
     
     // リンククリック時のエフェクト
     const links = document.querySelectorAll('a');
@@ -114,3 +117,30 @@ document.addEventListener('mousemove', function(e) {
         window.lastMouseY = e.clientY;
     }
 });
+
+// 訪問者カウンターの更新関数
+function updateVisitorCounter() {
+    const counterElement = document.getElementById('visitor-counter');
+    const messageElement = document.getElementById('visitor-message');
+    
+    if (counterElement && messageElement) {
+        // カウンター値を取得（実際はローカルストレージやサーバーから取得）
+        let count = localStorage.getItem('visitorCount');
+        if (!count) {
+            count = 247; // デフォルト値
+        } else {
+            count = parseInt(count, 10);
+        }
+        
+        // カウントを増やす
+        count++;
+        localStorage.setItem('visitorCount', count);
+        
+        // カウンター表示を更新（6桁でゼロパディング）
+        const paddedCount = String(count).padStart(6, '0');
+        counterElement.textContent = paddedCount;
+        
+        // メッセージ表示を更新
+        messageElement.textContent = `あなたは${count}人目の夢追い人です`;
+    }
+}
