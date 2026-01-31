@@ -1,0 +1,739 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+    <meta name="description" content="ようこそ！ここは私の個人サイトです★">
+    <meta name="keywords" content="個人サイト,アニメ,同人,推し活,イラスト">
+    <title>★☆ 夢幻のアニメワールド ☆★ へようこそ！！！</title>
+    <style type="text/css">
+        /* ========== レガシースタイル ========== */
+        html, body {
+            margin: 0;
+            padding: 0;
+            background-image: url('data:image/gif;base64,R0lGODlhCAAIAIABAP///wAAACH5BAEAAAEALAAAAAAIAAgAAAIHhI+py+0PA0sAOw==');
+            background-repeat: repeat;
+            font-family: "MS P ゴシック", "MSP ゴシック", Verdana, Arial, sans-serif;
+            font-size: 12px;
+            color: #000000;
+        }
+        
+        table {
+            border-collapse: collapse;
+        }
+        
+        td {
+            padding: 0;
+            margin: 0;
+            vertical-align: top;
+        }
+        
+        a {
+            color: #0000ff;
+            text-decoration: underline;
+        }
+        
+        a:visited {
+            color: #800080;
+        }
+        
+        a:hover {
+            color: #ff0000;
+            background-color: #ffff00;
+        }
+        
+        .neon_red {
+            color: #ff0000;
+            font-weight: bold;
+            text-shadow: 2px 2px 0px #00ff00;
+        }
+        
+        .neon_blue {
+            color: #0000ff;
+            font-weight: bold;
+            text-shadow: 2px 2px 0px #ffff00;
+        }
+        
+        .neon_yellow {
+            color: #ffff00;
+            font-weight: bold;
+            text-shadow: 2px 2px 0px #ff0000;
+        }
+        
+        .marquee_style {
+            background-color: #ffff00;
+            border: 3px solid #ff0000;
+            padding: 5px;
+            font-weight: bold;
+            animation: blink 0.5s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        .content_cell {
+            background-color: #fffacd;
+            border: 2px solid #ff69b4;
+        }
+        
+        .header_cell {
+            background-color: #ffb6d9;
+            border: 3px solid #ff0000;
+            padding: 10px;
+        }
+        
+        .sidebar_box {
+            background-color: #e6e6fa;
+            border: 2px dashed #ff00ff;
+            padding: 5px;
+            margin: 5px;
+        }
+        
+        .star {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background-color: #ffff00;
+            pointer-events: none;
+            z-index: 9999;
+            border-radius: 50%;
+            box-shadow: 0 0 5px #ffff00;
+            animation: fade_out 1s ease-out forwards;
+        }
+        
+        @keyframes fade_out {
+            0% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0.5) translateY(-50px); }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== 最外層テーブル ===== -->
+<table width="100%" height="100%" cellpadding="0" cellspacing="0" border="0">
+    <tr>
+        <td colspan="3" height="30" bgcolor="#ff0000">
+            <!-- 虹色罫線 -->
+            <hr size="3" color="#ff0000" noshade>
+            <hr size="2" color="#ffff00" noshade>
+            <hr size="2" color="#00ff00" noshade>
+            <hr size="2" color="#0000ff" noshade>
+            <hr size="3" color="#ff00ff" noshade>
+        </td>
+    </tr>
+
+    <!-- ===== ヘッダー部分 ===== -->
+    <tr>
+        <td colspan="3" class="header_cell" align="center">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td align="center" valign="middle">
+                        <!-- タイトル（SVGで創英角ポップ体風に） -->
+                        <svg width="600" height="100" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <style>
+                                    .title_text {
+                                        font-size: 48px;
+                                        font-weight: bold;
+                                        font-family: serif;
+                                        text-anchor: middle;
+                                    }
+                                </style>
+                            </defs>
+                            <!-- 影 -->
+                            <text class="title_text" x="302" y="62" fill="#000000" opacity="0.5">★☆ 夢幻のアニメワールド ☆★</text>
+                            <!-- 外側の輪郭 -->
+                            <text class="title_text" x="300" y="60" fill="#00ff00" stroke="#ff0000" stroke-width="3">★☆ 夢幻のアニメワールド ☆★</text>
+                            <!-- 中身 -->
+                            <text class="title_text" x="300" y="60" fill="#ffff00">★☆ 夢幻のアニメワールド ☆★</text>
+                        </svg>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" height="25">
+                        <span class="neon_red">～ あなたの推し子を応援するページ ～</span>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+
+    <!-- ===== マーキー（点滅＋スクロール） ===== -->
+    <tr>
+        <td colspan="3" height="35" align="center">
+            <marquee class="marquee_style" direction="left" scrollamount="5">
+                　　いらっしゃいませ！！！ ようこそ♡ いらっしゃいませ！！！ ようこそ♡ いらっしゃいませ！！！ ようこそ♡
+            </marquee>
+        </td>
+    </tr>
+
+    <!-- ===== 虹色罫線 ===== -->
+    <tr>
+        <td colspan="3" height="8" valign="middle">
+            <hr size="3" color="#ff00ff" noshade>
+            <hr size="2" color="#0000ff" noshade>
+            <hr size="2" color="#00ff00" noshade>
+            <hr size="2" color="#ffff00" noshade>
+            <hr size="3" color="#ff0000" noshade>
+        </td>
+    </tr>
+
+    <!-- ===== メインコンテンツ部分 ===== -->
+    <tr>
+        <td width="150" valign="top">
+            <!-- ===== 左サイドバー ===== -->
+            <table width="100%" cellpadding="0" cellspacing="2" border="0">
+                <tr>
+                    <td>
+                        <!-- 来訪者カウンター -->
+                        <table width="100%" cellpadding="3" cellspacing="0" border="2" bordercolor="#ff0000" bgcolor="#fffacd">
+                            <tr>
+                                <td align="center" bgcolor="#ff69b4">
+                                    <span class="neon_red">来訪者数</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center" height="40">
+                                    <table cellpadding="1" cellspacing="0" border="1" bordercolor="#ff0000">
+                                        <tr>
+                                            <td bgcolor="#000000" align="center" width="20" height="30">
+                                                <span id="counter_display" style="color: #ffff00; font-family: 'Courier New', monospace; font-size: 18px; font-weight: bold;">200124</span>
+                                            </td>
+                                            <td bgcolor="#000000" align="center" width="20" height="30">
+                                                <span id="counter_display_2" style="color: #ffff00; font-family: 'Courier New', monospace; font-size: 18px; font-weight: bold;">3</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center" bgcolor="#ffccff">
+                                    <small>Since 2001/4/1</small>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <!-- ===== ナビゲーション ===== -->
+                <tr>
+                    <td height="10"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <table width="100%" cellpadding="3" cellspacing="0" border="2" bordercolor="#00ff00" bgcolor="#e6e6fa">
+                            <tr>
+                                <td align="center" bgcolor="#b0e0e6">
+                                    <span class="neon_blue">ナビゲーション</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td bgcolor="#f0f8ff">
+                                    <table width="100%" cellpadding="2" cellspacing="0" border="0">
+                                        <tr><td>→ <a href="#content_home">ホーム</a></td></tr>
+                                        <tr><td>→ <a href="#content_animes">推し活日記</a></td></tr>
+                                        <tr><td>→ <a href="secret.html"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" width="1" height="1" alt="H" border="0"></a></td></tr>
+                                        <tr><td>→ <a href="#content_link">リンク</a></td></tr>
+                                        <tr><td>→ <a href="guestbook.html">ゲストブック</a></td></tr>
+                                        <tr><td>→ <a href="bbs.html">掲示板</a></td></tr>
+                                        <tr><td>→ <a href="footprint.html">足あと帳</a></td></tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <!-- ===== サイト情報 ===== -->
+                <tr>
+                    <td height="10"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <table width="100%" cellpadding="3" cellspacing="0" border="2" bordercolor="#ff00ff" bgcolor="#fff0f5">
+                            <tr>
+                                <td align="center" bgcolor="#ffb6d9">
+                                    <span class="neon_red">サイト情報</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td bgcolor="#fffacd">
+                                    <small>
+                                        <b>管理人：</b> あつみ<br>
+                                        <b>年齢：</b> 秘密☆<br>
+                                        <b>推し：</b> 悠介くん<br>
+                                        <b>好物：</b> わたあめ<br>
+                                        <b>一言：</b> 推し活は人生！
+                                    </small>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <!-- ===== バナー ===== -->
+                <tr>
+                    <td height="10"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <table width="100%" cellpadding="3" cellspacing="0" border="2" bordercolor="#0000ff" bgcolor="#fffacd">
+                            <tr>
+                                <td align="center" bgcolor="#add8e6">
+                                    <span class="neon_blue">推し活バナー</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center" bgcolor="#ffffff">
+                                    <table cellpadding="2" cellspacing="2" border="0">
+                                        <tr>
+                                            <td align="center">
+                                                <svg width="88" height="31" xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="88" height="31" fill="#ff1493" stroke="#000000" stroke-width="2"/>
+                                                    <text x="44" y="20" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="bold" font-family="serif">推し活中！</text>
+                                                </svg>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center">
+                                                <a href="#"><small>このバナーをリンク</small></a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <!-- ===== キリ番報告フォーム ===== -->
+                <tr>
+                    <td height="10"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <table width="100%" cellpadding="3" cellspacing="0" border="2" bordercolor="#ffff00" bgcolor="#fffacd">
+                            <tr>
+                                <td align="center" bgcolor="#ffff99">
+                                    <span class="neon_yellow">キリ番踏んだ！</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td bgcolor="#ffffff">
+                                    <form method="POST" action="guest.cgi" target="_blank">
+                                        <table width="100%" cellpadding="2" cellspacing="0" border="0">
+                                            <tr>
+                                                <td><small>お名前：</small></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" name="name" size="12"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><small>キリ番：</small></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" name="kiri" size="12"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><small>コメント：</small></td>
+                                            </tr>
+                                            <tr>
+                                                <td><textarea name="comment" rows="3" cols="12"></textarea></td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center" height="25">
+                                                    <input type="submit" value="送信！" style="background-color: #ff1493; color: white; font-weight: bold;">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </form>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+
+        <!-- ===== 中央スペーサー ===== -->
+        <td width="5" bgcolor="#ffffff"></td>
+
+        <td width="*" valign="top">
+            <!-- ===== メインコンテンツ ===== -->
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <!-- === ホーム === -->
+                <tr>
+                    <td class="content_cell" cellpadding="10">
+                        <table width="100%" cellpadding="10" cellspacing="0" border="0">
+                            <tr>
+                                <td id="content_home">
+                                    <h2 class="neon_red">★ ようこそ！ようこそ！ようこそ！ ★</h2>
+                                    <hr size="2" color="#ff00ff" noshade>
+                                    <p>
+                                        このサイトへようこそ！ここは、アニメ推し活をしているあつみが、毎日の推し活について語り倒すサイトです♡
+                                        <br><br>
+                                        特に「輝く季節への想い」というアニメの登場人物・悠介くんがゲキ推しです！
+                                        毎回毎回涙が止まりません。悠介くんのためなら何でもできる…そんな気持ちで日々推し活に励んでおります。
+                                        <br><br>
+                                        このページではそんな推し活の日々や、アニメの感想、推し活グッズなどについて書いていきます。
+                                        気が向いたら更新するので、ぜひ遊びに来てください★
+                                    </p>
+                                    <hr size="2" color="#00ff00" noshade>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td height="5"></td>
+                </tr>
+
+                <!-- === 推し活日記 === -->
+                <tr>
+                    <td class="content_cell" cellpadding="10">
+                        <table width="100%" cellpadding="10" cellspacing="0" border="0">
+                            <tr>
+                                <td id="content_animes">
+                                    <h2 class="neon_blue">
+                                        📺 推し活日記 
+                                        <img src="data:image/gif;base64,R0lGODlhEAAQAIABAP///wAAACH5BAEAAAAALAAAAAAQABAAAAIshI+py+0P4wtyUmlrvz0rxH1eGIVeaabquIroC8fyTNf2jdcKADs=" width="20" height="20" alt="NEW!" border="0">
+                                    </h2>
+                                    <hr size="2" color="#0000ff" noshade>
+                                    
+                                    <table width="100%" cellpadding="8" cellspacing="0" border="1" bordercolor="#ffccff" bgcolor="#fff0f5">
+                                        <tr bgcolor="#ffb6d9">
+                                            <td><b>2026年1月28日</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                悠介くんが新しいOVAで出演することが決定しました！！！<br>
+                                                涙が止まりません…推し活を続けていてよかった…<br>
+                                                早速Blu-rayの予約をしました♡
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <br>
+
+                                    <table width="100%" cellpadding="8" cellspacing="0" border="1" bordercolor="#ffccff" bgcolor="#fff0f5">
+                                        <tr bgcolor="#ffb6d9">
+                                            <td><b>2026年1月20日</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                推し活グッズの新しいアクリルキーホルダーがゲット出来ました！<br>
+                                                推しの笑顔が可愛すぎて毎日眺めています。<br>
+                                                最高…推し活楽しい…♡
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <br>
+
+                                    <table width="100%" cellpadding="8" cellspacing="0" border="1" bordercolor="#ffccff" bgcolor="#fff0f5">
+                                        <tr bgcolor="#ffb6d9">
+                                            <td><b>2026年1月10日</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                サイト開設！！！<br>
+                                                やっと自分のサイトが出来ました。<br>
+                                                これからたくさん推し活について書いていきます。<br>
+                                                みんなで一緒に推し活楽しみましょう〜♪
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                    <hr size="2" color="#0000ff" noshade>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td height="5"></td>
+                </tr>
+
+                <!-- === 自作萌え絵 === -->
+                <tr>
+                    <td class="content_cell" cellpadding="10">
+                        <table width="100%" cellpadding="10" cellspacing="0" border="0">
+                            <tr>
+                                <td align="center">
+                                    <h2 class="neon_yellow">🎨 自作萌え絵 🎨</h2>
+                                    <hr size="2" color="#ffff00" noshade>
+                                    <p>
+                                        推しをイラストにしてみました♡<br>
+                                        まだ下手だけど、頑張りました…！
+                                    </p>
+                                    <br>
+                                    <svg width="200" height="240" xmlns="http://www.w3.org/2000/svg" style="border: 2px solid #ff69b4; background-color: #ffffff;">
+                                        <!-- 簡単なアニメキャラ風イラスト -->
+                                        <!-- 顔 -->
+                                        <circle cx="100" cy="60" r="35" fill="#ffcc99" stroke="#000000" stroke-width="2"/>
+                                        <!-- 髪 -->
+                                        <path d="M 65 45 Q 60 20 100 15 Q 140 20 135 45" fill="#8b4513" stroke="#000000" stroke-width="2"/>
+                                        <!-- 目 -->
+                                        <circle cx="85" cy="55" r="8" fill="#ffffff" stroke="#000000" stroke-width="1"/>
+                                        <circle cx="115" cy="55" r="8" fill="#ffffff" stroke="#000000" stroke-width="1"/>
+                                        <circle cx="87" cy="57" r="5" fill="#0000ff" stroke="#000000" stroke-width="1"/>
+                                        <circle cx="117" cy="57" r="5" fill="#0000ff" stroke="#000000" stroke-width="1"/>
+                                        <circle cx="89" cy="54" r="2" fill="#000000"/>
+                                        <circle cx="119" cy="54" r="2" fill="#000000"/>
+                                        <!-- 鼻 -->
+                                        <line x1="100" y1="65" x2="100" y2="72" stroke="#000000" stroke-width="1"/>
+                                        <!-- 口 -->
+                                        <path d="M 90 80 Q 100 85 110 80" stroke="#ff00ff" stroke-width="2" fill="none"/>
+                                        <!-- 体 -->
+                                        <rect x="75" y="95" width="50" height="60" fill="#ff69b4" stroke="#000000" stroke-width="2" rx="5"/>
+                                        <!-- 腕 -->
+                                        <rect x="55" y="100" width="20" height="45" fill="#ffcc99" stroke="#000000" stroke-width="2" rx="3"/>
+                                        <rect x="125" y="100" width="20" height="45" fill="#ffcc99" stroke="#000000" stroke-width="2" rx="3"/>
+                                        <!-- 足 -->
+                                        <rect x="80" y="155" width="15" height="50" fill="#333333" stroke="#000000" stroke-width="2" rx="3"/>
+                                        <rect x="105" y="155" width="15" height="50" fill="#333333" stroke="#000000" stroke-width="2" rx="3"/>
+                                    </svg>
+                                    <br><br>
+                                    <span class="neon_red">↑ 推しをイメージして描きました</span>
+                                    <hr size="2" color="#ffff00" noshade>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td height="5"></td>
+                </tr>
+
+                <!-- === 同盟リンクバナー === -->
+                <tr>
+                    <td class="content_cell" cellpadding="10">
+                        <table width="100%" cellpadding="10" cellspacing="0" border="0">
+                            <tr>
+                                <td align="center">
+                                    <h2 class="neon_red">🌟 推し活同盟 🌟</h2>
+                                    <hr size="2" color="#ff0000" noshade>
+                                    <p>以下の同盟に加盟しております：</p>
+                                    <br>
+                                    <table width="100%" cellpadding="5" cellspacing="0" border="0">
+                                        <tr>
+                                            <td align="center" width="33%">
+                                                <svg width="200" height="40" xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="200" height="40" fill="#ff69b4" stroke="#000000" stroke-width="2"/>
+                                                    <text x="100" y="25" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="bold">推し活応援同盟</text>
+                                                </svg>
+                                                <br><small><a href="#">加盟サイト一覧</a></small>
+                                            </td>
+                                            <td align="center" width="33%">
+                                                <svg width="200" height="40" xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="200" height="40" fill="#00bfff" stroke="#000000" stroke-width="2"/>
+                                                    <text x="100" y="25" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="bold">アニメ好き集合</text>
+                                                </svg>
+                                                <br><small><a href="#">同盟に参加</a></small>
+                                            </td>
+                                            <td align="center" width="33%">
+                                                <svg width="200" height="40" xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="200" height="40" fill="#ffff00" stroke="#000000" stroke-width="2"/>
+                                                    <text x="100" y="25" font-size="12" fill="#ff0000" text-anchor="middle" font-weight="bold">イラスト同盟</text>
+                                                </svg>
+                                                <br><small><a href="#">ここをクリック</a></small>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <hr size="2" color="#ff0000" noshade>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td height="5"></td>
+                </tr>
+
+                <!-- === リンク === -->
+                <tr>
+                    <td class="content_cell" cellpadding="10">
+                        <table width="100%" cellpadding="10" cellspacing="0" border="0">
+                            <tr>
+                                <td id="content_link">
+                                    <h2 class="neon_blue">🔗 相互リンクの部屋 🔗</h2>
+                                    <hr size="2" color="#0000ff" noshade>
+                                    
+                                    <b class="neon_yellow">★ 推し活サイト ★</b>
+                                    <table width="100%" cellpadding="3" cellspacing="1" border="0" bgcolor="#ffccff">
+                                        <tr bgcolor="#fffacd">
+                                            <td><a href="#">♡ 翔太くん推し活ブログ</a></td>
+                                        </tr>
+                                        <tr bgcolor="#fff0f5">
+                                            <td><a href="#">♡ 魔法少女応援サイト</a></td>
+                                        </tr>
+                                        <tr bgcolor="#fffacd">
+                                            <td><a href="#">♡ アニメファンアート館</a></td>
+                                        </tr>
+                                        <tr bgcolor="#fff0f5">
+                                            <td><a href="#">♡ 二次創作同人サイト</a></td>
+                                        </tr>
+                                    </table>
+
+                                    <br><b class="neon_red">★ 情報サイト ★</b>
+                                    <table width="100%" cellpadding="3" cellspacing="1" border="0" bgcolor="#ccffcc">
+                                        <tr bgcolor="#f0fff0">
+                                            <td><a href="#">📺 アニメ放映予定表</a></td>
+                                        </tr>
+                                        <tr bgcolor="#e6f5e6">
+                                            <td><a href="#">🎎 同人誌情報館</a></td>
+                                        </tr>
+                                        <tr bgcolor="#f0fff0">
+                                            <td><a href="#">💬 推し活掲示板</a></td>
+                                        </tr>
+                                        <tr bgcolor="#e6f5e6">
+                                            <td><a href="#">📖 アニメレビューサイト</a></td>
+                                        </tr>
+                                    </table>
+
+                                    <br><b class="neon_blue">★ お題バトン ★</b>
+                                    <table width="100%" cellpadding="3" cellspacing="1" border="0" bgcolor="#ccffff">
+                                        <tr bgcolor="#f0ffff">
+                                            <td><a href="#">🎉 「推し活って何？」お題バトン</a></td>
+                                        </tr>
+                                        <tr bgcolor="#e6f5f5">
+                                            <td><a href="#">🎨 「推し絵描きました」バトン</a></td>
+                                        </tr>
+                                        <tr bgcolor="#f0ffff">
+                                            <td><a href="#">💕 「推しのここが好き」バトン</a></td>
+                                        </tr>
+                                    </table>
+
+                                    <br><a href="#"><b>★ リンクしてくれるサイトさん募集中！★</b></a>
+
+                                    <hr size="2" color="#0000ff" noshade>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td height="5"></td>
+                </tr>
+
+                <!-- === ネットマナー === -->
+                <tr>
+                    <td class="content_cell" cellpadding="10">
+                        <table width="100%" cellpadding="10" cellspacing="0" border="0">
+                            <tr>
+                                <td align="center">
+                                    <h2 class="neon_yellow">⚠️ その他 ⚠️</h2>
+                                    <hr size="2" color="#ffff00" noshade>
+                                    <p>
+                                        <a href="#" target="_blank" style="color: #ff0000; font-weight: bold;">★ 毒吐きネットマナー ★</a><br>
+                                        <small>（新しいウィンドウで開きます）</small>
+                                    </p>
+                                    <hr size="1" color="#ffff00" noshade>
+                                    <p>
+                                        <small>
+                                            ※ このサイトはリンクフリーです！<br>
+                                            ※ 右クリック禁止です！<br>
+                                            ※ Internet Explorer 5.5 以上で閲覧することをお勧めします。<br>
+                                            ※ 800×600 解像度での閲覧を想定しています。<br>
+                                            ※ このサイトのコンテンツの無断転載を禁止します。
+                                        </small>
+                                    </p>
+                                    <hr size="2" color="#ffff00" noshade>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+
+    <!-- ===== 虹色罫線 ===== -->
+    <tr>
+        <td colspan="3" height="8" valign="middle">
+            <hr size="3" color="#ff0000" noshade>
+            <hr size="2" color="#ffff00" noshade>
+            <hr size="2" color="#00ff00" noshade>
+            <hr size="2" color="#0000ff" noshade>
+            <hr size="3" color="#ff00ff" noshade>
+        </td>
+    </tr>
+
+    <!-- ===== フッター ===== -->
+    <tr>
+        <td colspan="3" bgcolor="#ffb6d9" height="70">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td align="center" valign="middle">
+                        <p class="neon_red">
+                            © 2001-2026 夢幻のアニメワールド All Rights Reserved.<br>
+                            <small>
+                                管理人：あつみ | 
+                                <a href="mailto:atsumi@example.mail">メール</a> | 
+                                <a href="guestbook.html">ゲストブック</a><br>
+                                <br>
+                                このページはベストなサイトです。
+                            </small>
+                        </p>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+<!-- ===== JavaScript ===== -->
+<script type="text/javascript">
+// ===== 右クリック禁止 =====
+document.oncontextmenu = function(e) {
+    alert('右クリック禁止！\n\nこのサイトのコンテンツは大切に作られています。');
+    return false;
+};
+
+// ===== カウンター increment =====
+var counter = 200124;
+document.getElementById('counter_display').innerHTML = String(counter);
+setInterval(function() {
+    counter++;
+    document.getElementById('counter_display').innerHTML = String(counter);
+}, Math.random() * 5000 + 10000); // 10～15秒毎
+
+// ===== マウスカーソルキラキラエフェクト =====
+document.onmousemove = function(e) {
+    // 10%の確率で星を生成
+    if (Math.random() < 0.1) {
+        createStar(e.clientX, e.clientY);
+    }
+};
+
+function createStar(x, y) {
+    var star = document.createElement('div');
+    star.className = 'star';
+    star.style.left = (x - 4) + 'px';
+    star.style.top = (y - 4) + 'px';
+    document.body.appendChild(star);
+    
+    // 1秒後に削除
+    setTimeout(function() {
+        document.body.removeChild(star);
+    }, 1000);
+}
+
+// ===== ページ読み込み完了メッセージ =====
+window.onload = function() {
+    console.log('%c★☆ 夢幻のアニメワールド へようこそ！★☆', 'color: #ff1493; font-size: 16px; font-weight: bold;');
+};
+
+// ===== ページ離脱時のメッセージ =====
+// window.onbeforeunload = function() {
+//     return 'もう来なくなるんですか…？(´；ω；`)';
+// };
+</script>
+
+</body>
+</html>
