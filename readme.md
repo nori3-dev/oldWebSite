@@ -21,3 +21,7 @@
   `git push -u origin main`
 
 作成者: Git管理エージェント
+
+追記:
+- 日付: 2026-01-31
+- 備考: 本日、SSH経由でGitHubに接続し、リモート (`origin/main`) へ push が成功しました（練習記録）。
