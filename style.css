@@ -125,6 +125,18 @@ body {
     font-family: 'Courier New', monospace;
 }
 
+.kiriban-notice {
+    margin-top: 10px;
+    padding: 8px;
+    background-color: #FFFFE0;
+    border: 1px dashed #FF6347;
+    border-radius: 5px;
+    color: #FF0000;
+    font-weight: bold;
+    font-size: 0.85em;
+    line-height: 1.4;
+}
+
 /* ========== メインコンテンツ ========== */
 .main-content {
     padding: 0 10px;
